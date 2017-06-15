@@ -1,31 +1,32 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const PATHS = {
-  app: path.join(__dirname, './app'),
-  build: path.join(__dirname, './build'),
-  node: path.join(__dirname, './node_modules'),
-};
-
 var config = {
-  entry: PATHS.app + '/index.jsx',
-  output: {
-    path: PATHS.build,
-    filename: 'bundle.js'
+  context: path.resolve(__dirname, './app'),
+  entry: {
+    app: './index.js',
+  },
+  output: {    
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, './dist/assets'),
+    publicPath: '/assets',
   },
   module: {
     loaders : [
       {
-        test: /\.jsx?$/,
+        test: /\.js?$/,
+        exclude: /node_modules/,
         loader: 'babel-loader',
+        include: __dirname,
         query: {
-          cacheDirectory: true,
           presets: ['es2015', 'react']
-        },
-        include: PATHS.app
+        }
       },
     ]
-  }
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, './app'),
+  },
 };
 
 module.exports = config;
