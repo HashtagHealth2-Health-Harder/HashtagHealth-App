@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 var config = {
@@ -16,16 +17,24 @@ var config = {
       {
         test: /\.js?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loaders: ['babel-loader'],
         include: __dirname,
-        query: {
-          presets: ['es2015', 'react']
-        }
       },
     ]
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: 'body',
+      template: 'index.html',
+      filename: 'index.html'
+    }),
+  ],
   devServer: {
     contentBase: path.resolve(__dirname, './app'),
+    
+    // makes webpack output less verbose
+    noInfo: true,
+    stats: 'errors-only',
   },
 };
 

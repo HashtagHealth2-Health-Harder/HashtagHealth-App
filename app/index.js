@@ -1,5 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from "./components/App";
+import { HashRouter as Router, Route } from 'react-router-dom';
+import App from './containers/App';
 
-render(<App/>, document.getElementById('app'));
+render(
+  <Router>
+    <Route path='/' component={App} />
+  </Router>, document.getElementById('app'));
