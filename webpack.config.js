@@ -32,6 +32,7 @@ var config = {
       template: 'index.html',
       filename: 'index.html'
     }),
+    new webpack.NoEmitOnErrorsPlugin(),
   ],
   resolve: {
     alias: {
