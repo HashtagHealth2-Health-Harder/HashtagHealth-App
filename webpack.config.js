@@ -20,6 +20,10 @@ var config = {
         loaders: ['babel-loader'],
         include: __dirname,
       },
+      {
+        test: /\.scss$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
+      }
     ]
   },
   plugins: [
