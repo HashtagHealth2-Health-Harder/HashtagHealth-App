@@ -1,33 +1,34 @@
-.land {
-  fill: #ddd;
+// main.scss
+
+// helpers
+@import 'colors';
+@import 'fonts';
+
+// components
+@import 'map';
+
+body {
+  margin: 30px;
+  background: $bg;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: $regular;
+  color: $text;
 }
 
-.border {
-  fill: none;
-  stroke: #fff;
-  stroke-linejoin: round;
-  stroke-linecap: round;
+p { 
+  margin: 0;
 }
 
-.bubble {
-  fill: red;
-  fill-opacity: .3;
-  stroke: #fff;
-  stroke-width: .5px;
-  pointer-events: all;
-}
-
-circle:hover {
-  fill-opacity: .8 !important;
-}
-
-.legend circle {
-  fill: none;
-  stroke: #ccc;
-}
-
-.legend text {
-  fill: #777;
-  font: 10px sans-serif;
-  text-anchor: middle;
+.site-header {
+  margin-bottom: 30px;
+  
+  .site-title {
+    font-size: 32px;
+  }
+  
+  .site-description {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
 }

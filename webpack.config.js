@@ -33,6 +33,12 @@ var config = {
       filename: 'index.html'
     }),
   ],
+  resolve: {
+    alias: {
+      'react': path.join(__dirname, 'node_modules', 'react')
+    },
+    extensions: ['*', '.js']
+  },
   devServer: {
     contentBase: path.resolve(__dirname, './app'),
     
