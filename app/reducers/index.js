@@ -1,3 +1,8 @@
-const reducer = () => {}
+import { combineReducers } from 'redux';
+import { tweets } from './tweets';
 
-export default reducer;
+const reducers = combineReducers({
+  tweets
+});
+
+export default reducers;
