@@ -1,3 +1,5 @@
+import { browserHistory } from 'react-router-dom';
+
 export const REQUEST_TWEETS = 'REQUEST_DATA';
 export function requestTweets() {
   return {
@@ -15,22 +17,19 @@ export function receiveTweets(tweets) {
 
 export function fetchTweets(token) {
   return (dispatch) => {
-    // TODO: figure out endpoint and any required auth (i.e. access token)
-    let apiUrl = 'some/url';
-    let accessToken = 'some/token/';
-    
+    let apiUrl = 'https://itunes.apple.com/search?term=beyonce&entity=musicVideo';
+
     dispatch(requestTweets());
     return fetch(apiUrl, {
       method: 'GET',
-      headers: { 
-        'Content-Type': 'application/json' 
-      },
     }).then((response) => {
-      // TODO: figure out how the data is coming in
-      dispatch(receiveTweets(response));
+      if (response.ok) {
+        return response.json().then((data) => {
+            dispatch(receiveTweets(data));
+        });
+      }
     }).catch((err) => {
       if (err) {
-        // TODO: figure out a way to handle error
         console.error(`Unable to fetch tweets. Error: ${err}`);
         browserHistory.push('/');
       }
