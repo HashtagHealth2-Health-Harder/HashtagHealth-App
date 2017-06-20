@@ -17,15 +17,20 @@ export function receiveTweets(tweets) {
 
 export function fetchTweets(token) {
   return (dispatch) => {
-    let apiUrl = 'https://itunes.apple.com/search?term=beyonce&entity=musicVideo';
+    let apiUrl = 'http://hashtag-health.com:5000/latest';
 
     dispatch(requestTweets());
     return fetch(apiUrl, {
       method: 'GET',
+      mode: 'no-cors',
+      header: {
+        'Access-Control-Allow-Origin':'*',
+        'Content-Type': 'application/json'
+      }
     }).then((response) => {
       if (response.ok) {
         return response.json().then((data) => {
-            dispatch(receiveTweets(data));
+          dispatch(receiveTweets(data));
         });
       }
     }).catch((err) => {

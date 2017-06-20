@@ -9,7 +9,7 @@ require("!style-loader!css-loader!sass-loader!./stylesheets/main.scss");
 
 render(
   <Provider store={store}>
-    <Router>
+    <Router onUpdate={() => window.scrollTo(0, 0)}>
       <Route path='/' component={App} />
     </Router>
   </Provider>, document.getElementById('app'));
